@@ -123,16 +123,17 @@
 
     <!-- contact -->
     <section class="contact" id="contact">
-    < class="container">
+    <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h2>Contact</h2>
+          <h2>Contact Me</h2>
           <hr>
         </div>
       </div>
-
+      
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
+          
           <form name="submit-to-google-sheet">
             <div class="form-group">
               <label for="nama">Nama</label>
@@ -153,9 +154,9 @@
             </select>
             <div class="from-group">
               <label for="pesan">Pesan</label>
-              <textarea class="form-control" id="pesan" rows="10" name="pesan" placeholder="Masukan Pesan"></textarea>
+              <textarea class="form-control" id="pesan" rows="10" name="Pesan" placeholder="Masukan Pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary"> Kirim Pesan</button> 
+              <button type="submit" class="btn btn-primary btn-kirim">Kirim</button> 
           </form>
         </div>
       </div>
@@ -181,18 +182,30 @@
     </footer>
     <!-- akhir footer -->
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+
+
     
     <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzFt_8gEtNZNJHLb-Pauy46bKPJTb9TtzdMQL-Tcj7RfuXI-sSmr7qptZ0HCYDqgAu7qA/exec"
-  const form = document.forms('submit-to-google-sheet')
-
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzFt_8gEtNZNJHLb-Pauy46bKPJTb9TtzdMQL-Tcj7RfuXI-sSmr7qptZ0HCYDqgAu7qA/exec';
+  const form = document.forms['submit-to-google-sheet'];
+  
+  
   form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+              
+                .then(response => alert("Terima Kasih! Pesan Anda Sudah Kami Terima..."))
+                .catch(error => console.error('Error!', error.message))
+                form.reset()
+            })
+          </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
       
   </body>
