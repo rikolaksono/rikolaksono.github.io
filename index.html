@@ -123,7 +123,7 @@
 
     <!-- contact -->
     <section class="contact" id="contact">
-    <div class="container">
+    < class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
           <h2>Contact</h2>
@@ -133,18 +133,18 @@
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <form>
+          <form name="submit-to-google-sheet">
             <div class="form-group">
               <label for="nama">Nama</label>
-              <input type="text" id="nama" class="form-control" placeholder="Masukkan Nama">
+              <input type="text" id="nama" name="Name" class="form-control" placeholder="Masukkan Nama">
             </div>
             <div class="form-group">
               <label for="email">email</label>
-              <input type="text" id="nama" class="form-control" placeholder="Masukkan Email">
+              <input type="email" id="email" name="Email" class="form-control" placeholder="Masukkan Email">
             </div>
             <div class="form-group">
               <label for="Telp">No Telepon</label>
-              <input type="text" id="telepon" class="form-control" placeholder="Masukkan No Telepon">
+              <input type="text" id="telepon" name="Telepon" class="form-control" placeholder="Masukkan No Telepon">
             </div>
             <select class="form-control">
               <option>-- Pilih Kategori --</option>
@@ -153,9 +153,9 @@
             </select>
             <div class="from-group">
               <label for="pesan">Pesan</label>
-              <textarea class="form-control" rows="10" placeholder="Masukan Pesan"></textarea>
+              <textarea class="form-control" id="pesan" rows="10" name="pesan" placeholder="Masukan Pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-success"> Kirim Pesan</button> 
+              <button type="submit" class="btn btn-primary"> Kirim Pesan</button> 
           </form>
         </div>
       </div>
@@ -186,6 +186,20 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+    <script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzFt_8gEtNZNJHLb-Pauy46bKPJTb9TtzdMQL-Tcj7RfuXI-sSmr7qptZ0HCYDqgAu7qA/exec"
+  const form = document.forms('submit-to-google-sheet')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>
 
